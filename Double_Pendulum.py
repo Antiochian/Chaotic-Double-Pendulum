@@ -10,16 +10,15 @@ import math
 import numpy as np
 
 def EquationRHS(currentstate,y):
-        #find RHS of Lagrangian using angles and velocities as variables
-#UNPACK currentstate array to find constants        
+    #find RHS of Lagrangian using angles and velocities as variables
+#UNPACK currentstate array to find useful constants        
     L1 = currentstate[2]     #rod lengths
     L2 = currentstate[3]
     m1 = currentstate[6]     #bob masses
     m2 = currentstate[7]
     g = currentstate[8]     #g value
-    #dt = currentstate[9]    #timestep value (NOT USED)
     
-    #unpack y array INSTEAD to find VARIABLES
+    #unpack y array INSTEAD to find the variables
     theta1 = y[0] 
     theta2 = y[1]
     w1 = y[2]
@@ -104,7 +103,8 @@ def draw(currentstate, Nx, Ny, scale, window):
     y2 = L1*math.cos(theta1) + L2*math.cos(theta2)
     pos2 = center + np.array([int(scale*x2), int(scale*y2)])
     
-    rodcolor = (253, 246, 227) #rods = black
+    #Use "Solarized" colour scheme by Ethan Schnoover
+    rodcolor = (253, 246, 227) #rods colour
     bobcolor1 = (220, 50, 47) #m1 = red
     bobcolor2 = (38, 139, 210) #m2 = blue
      
@@ -132,11 +132,11 @@ def main():
     theta2 = 0.5 
     L1 = 1.0     #rod lengths
     L2 = 1.0
-    w1 = 15.0     #angular velocities
-    w2 = 15.0
+    w1 = 4.0     #angular velocities
+    w2 = 5.0
     
-    m1 = 0.50     #bob masses
-    m2 = 10.0
+    m1 = 1.0     #bob masses
+    m2 = 1.0
     g = 9.81     #g value
     dt = 0.01    #time increment
 
@@ -161,11 +161,11 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.unicode == "r":
                     currentstate[0] = theta1 = 1.5*np.random.normal()
-                    currentstate[1] = theta2 = 1.5*np.random.normal(theta1)
+                    currentstate[1] = theta2 = 1.5*np.random.normal(theta1) #bias theta2 to be similar to theta1
                     currentstate[4] = w1 = 6*np.random.normal()
                     currentstate[5] = w2 = 6*np.random.normal()
                     currentstate[6] = m1 = min(10,abs(np.random.normal()))
-                    currentstate[7] = m2 = min(10,abs(np.random.normal()))
+                    currentstate[7] = m2 = min(10*m1,abs(np.random.normal())) #set m2's maximum as 10*m1
                 
                 
         draw(currentstate, Nx, Ny, scale, window) #draw system onscreen
