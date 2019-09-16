@@ -7,6 +7,7 @@ Other variables (gravitational acceleration, rod lengths, etc) can also be chang
 Window is resizeable as you please.
 
 Sample screenshots:
+--------------
 ![Sample Output](pend1.png)
 ![Sample Output](pend2.png)
 ![Sample Output](pend3.png)
