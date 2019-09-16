@@ -128,12 +128,12 @@ def main():
     pygame.display.set_caption('Double Pendulum (Press X to exit)')
     
     #initial values
-    theta1 = 0.5 #bob angles
-    theta2 = 0.5 
+    theta1 = 2.4 #bob angles
+    theta2 = 2.4 
     L1 = 1.0     #rod lengths
     L2 = 1.0
-    w1 = 4.0     #angular velocities
-    w2 = 5.0
+    w1 = 0.0     #angular velocities
+    w2 = 0.0
     
     m1 = 1.0     #bob masses
     m2 = 1.0
