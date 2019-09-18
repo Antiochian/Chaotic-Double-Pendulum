@@ -9,5 +9,5 @@ Window is resizeable as you please.
 Sample screenshots:
 --------------
 ![Sample Output](Pend_1.png)
-![Sample Output](Pend_2.png)
+![Sample Output](pendulum.gif)
 ![Sample Output](Pend_3.png)
